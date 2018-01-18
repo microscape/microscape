@@ -1,0 +1,13 @@
+{
+  "id": "sections",
+  "sections": [
+    {
+      "headline": "h1",
+      "text": "t1"
+    },
+    {
+      "headline": "h2",
+      "text": "t2"
+    }
+  ]
+}

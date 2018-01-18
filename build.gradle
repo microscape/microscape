@@ -1,14 +1,28 @@
 apply plugin: 'java'
+group 'io.microscape'
+archivesBaseName = 'microscape'
+version = '1.0-SNAPSHOT'
 
+description = """demo"""
 
-buildscript {
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+allprojects {
     repositories {
         mavenLocal()
         mavenCentral()
         jcenter()
     }
-    dependencies {
+}
 
+subprojects {
+    version = '1.0-SNAPSHOT'
+}
+
+buildscript {
+
+    dependencies {
     }
 }
 
@@ -21,3 +35,5 @@ repositories {
 dependencies {
     testCompile "org.junit.jupiter:junit-jupiter-engine:${version_junit5}"
 }
+
+

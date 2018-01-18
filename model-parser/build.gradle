@@ -1,0 +1,12 @@
+apply plugin : 'groovy'
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.4.10'
+    compile 'org.codehaus.groovy:groovy-json:2.4.13'
+
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4', {
+        exclude module : 'groovy-all'
+    }
+
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}

@@ -22,7 +22,6 @@ javadoc/
 
 # lock file, a part of Oracle Credential Store Framework
 cwallet.sso.lck### Gradle template
-/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -491,3 +490,4 @@ hs_err_pid*
 .dropbox
 .dropbox.attr
 .dropbox.cache
+*.iml
