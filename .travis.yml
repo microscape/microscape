@@ -1,7 +1,11 @@
 before_install:
- - chmod +x gradlew
+  - chmod +x gradlew
 
 language: java
 
 jdk:
   - oraclejdk8
+
+notifications:
+  slack:
+    secure: WfPZ3fg4g4M+A53gFzdBxdMXkOxhE/1vfeHXw8rAKkJyZJCQeLyQToO0Ekr5t/db3+ceClvoyngXNxQTzrbG5E9SJxUU/zMAoNHP7iJLEb64O6vZv9BEUMj2kDYGG5a7Ke3CG3gjjDb2qp32+wK7ibPRXRTQOsTIjJJtwyc4om663TPpvjQarLKXp54BkjBRdPhF/AADvKcFTWWMh9pzhFQOLJRlUb7ej/dm7l6hpPmPFAf/Rvq4mbTtp6DfxUf+YKpEtRD8zNE1k/lJ1KQeAOI82gKEy5zB+N0m+32X9i2o/osC2gR/tJdMc/fH6I2kyIMaCmvXWdfRlN/xSc/kyCEbZlyVoiMJUfshpv1R+hcklznHY0zoKKEii6BvQTpZRysPG8okZOmgXAQwjeIfqjwr3p3g8bWd0qJhZaxGD14j9eKYZAcah7edbYL0xARG2Kpza0J/BovbMP+rrVZpH/y9TyO3nrFLxkG5+nVmJCFwSPQiqw54tU9xVFtAmTOX0CxnkMtz5z577GNVvCQnUsnRkC2rXocqSjH216Zzz56Q1YyOrbk1x9VvysSD3o+G9R2Gm9E03DgIkCxD+SNzTwKjLIFXv4dM27iI/d7F1NF5DiSVQNIfDIqP0cLhbbn6pqayAYFs5t5tFlc11pAVO9DvAn/8UJkk7DHGGa+Ov6o=
