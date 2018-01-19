@@ -1,7 +1,6 @@
-package io.microscape.parser.model
+package io.microscape.api
 
 import groovy.transform.EqualsAndHashCode
-import groovy.transform.TupleConstructor
 
 import static java.util.stream.Collectors.toList
 
@@ -15,6 +14,6 @@ class Section {
     Section(Map<String, Object> map) {
         this.headline = map["headline"]
         this.text = map["text"]
-        this.content = map["content"]?.stream()?.map{ new Section(it) }?.collect(toList())
+        this.content = map["content"]?.stream()?.map{ new Section(it) }?.collect(toList()) ?: []
     }
 }

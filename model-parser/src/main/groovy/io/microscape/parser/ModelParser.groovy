@@ -1,7 +1,7 @@
 package io.microscape.parser
 
 import groovy.json.JsonSlurper
-import io.microscape.parser.model.Documentation
+import io.microscape.api.Documentation
 
 import java.nio.file.Files
 import java.nio.file.Path
