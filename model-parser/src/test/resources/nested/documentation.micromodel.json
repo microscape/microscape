@@ -1,0 +1,15 @@
+{
+  "id": "nested",
+  "sections": [
+    {
+      "headline": "h3",
+      "text": "t3",
+      "content": [
+        {
+          "headline": "h4",
+          "text": "t4"
+        }
+      ]
+    }
+  ]
+}
