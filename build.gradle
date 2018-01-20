@@ -1,4 +1,6 @@
 apply plugin: 'java'
+apply plugin: "org.sonarqube"
+
 group 'io.microscape'
 archivesBaseName = 'microscape'
 version = '1.0-SNAPSHOT'
@@ -7,6 +9,15 @@ description = """demo"""
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1"
+    }
+}
 
 allprojects {
     repositories {
