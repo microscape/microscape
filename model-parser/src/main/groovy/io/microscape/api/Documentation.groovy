@@ -7,8 +7,8 @@ import static java.util.stream.Collectors.toList
 @EqualsAndHashCode
 class Documentation {
 
-    String id;
-    List<Section> sections = [];
+    String id
+    List<Section> sections = []
 
     Documentation(Map<String, Object> map) {
         this.id = map["id"]

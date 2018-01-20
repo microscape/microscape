@@ -17,23 +17,5 @@ allprojects {
 }
 
 subprojects {
-    version = '1.0-SNAPSHOT'
+    version = project.version
 }
-
-buildscript {
-
-    dependencies {
-    }
-}
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-    jcenter()
-}
-
-dependencies {
-    testCompile "org.junit.jupiter:junit-jupiter-engine:${version_junit5}"
-}
-
-
