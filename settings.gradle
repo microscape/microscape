@@ -1,2 +1,5 @@
 include 'model-parser'
 include 'markdown-printer'
+include 'model-generator'
+include 'examples:feign'
+
