@@ -15,7 +15,7 @@ addons:
   sonarcloud:
     organization: "microscape-io" # the key of the org you chose at step #3
 
-script: ./gradlew check sonarqube --scan
+script: ./gradlew check
 
 notifications:
   slack:
