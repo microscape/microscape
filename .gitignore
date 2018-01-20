@@ -491,3 +491,6 @@ hs_err_pid*
 .dropbox.attr
 .dropbox.cache
 *.iml
+!/model-generator/src/test/resources/empty.jar
+!/model-generator/src/test/resources/spring-boot-properties.jar
+!/model-generator/src/test/resources/spring-boot-yml.jar
