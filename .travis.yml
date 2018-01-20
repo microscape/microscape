@@ -20,7 +20,7 @@ addons:
       - master
       - development
 
-script: ./gradlew check sonarqube
+script: ./gradlew check
 
 notifications:
   slack:
