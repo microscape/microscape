@@ -23,10 +23,13 @@ class MarkdownPrinterTest extends Specification {
     def "printing the Model should result in correct Markdown"() {
         given: "a Model"
         Documentation documentation = model
-        String expected = new File("$defaultPathBase/$markdown").getText("utf-8")
+        String expected = new File("$defaultPathBase/$markdown")
+                .getText("utf-8")
+                .replaceAll("\\r?\\n", "\n")
 
         when: "this model is printed"
         def actual = new MarkdownPrinter().print documentation
+        actual = actual.replaceAll("\\r?\\n", "\n")
 
         then: "the printed markdown should be correct"
         actual == expected
