@@ -30,3 +30,10 @@ allprojects {
 subprojects {
     version = project.version
 }
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'microscape'
+        property 'sonar.projectKey', 'io.microscape'
+    }
+}
