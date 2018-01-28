@@ -1,8 +1,3 @@
-env:
-  global:
-    # The next declaration is the encrypted SONAR_TOKEN
-    - secure: "qGawwy6qMugR0PJHbSQu+L5jEv7IsukJncvFevsC4SfvMdj0RNb/nj4NPZbtlxu3AJ3McxrAqEWWiekeXElVEBz4m9zm7NXuGQouV9ilHRRw8Y1BWSXlJVv5aIw55zCS1K40wjewSJmTw+qdmcocxVd99hA9kDMX0ZcBdT4T54F9ngqRJKyirtYWYv9RLQJvaKfOIX0vtzXRnqJateB4DSBF9SQGiEkF1megcsK829kAhrzuLKWamy5DfmxIRoTmBXCTxrL3T1yJWee6nf+dagtrCn3kqQQHtA0swRh9dUm/3lCMwDlXT+ewro79LgERXveVIVdMJtDRh8VsUvRMIJEBsXdQF6Yeahkoo/2pTgU5NJbo+BNQZ2mKb13987ChEQgIANOf15t4tE0IpLkUUqsdZPw3IwAnNybEmCazQWy4I422MO2zzxM5HqSCth2e6uc4KyDdsKWoowOxqVbvjPrxm1pX8RdBun7UyGSd9VF5PGh38i+TqsMo6GUEk5BcJeYiEhArnRN5Cqzyep2UHanIxPh1Y04yKQpC67+FMfRjhOeGkgn2h1V9PnCMjpxYzWeUFJyDABQebuwTBIX3CteivDzCos9R9VxG+kZQKfkgh+eiZtUjeKMjueLjbaO8ol9cyFNtB70YXVNYW66zQJFnPDqBqByNvd0EyF1+Amk="
-
 before_install:
   - chmod +x gradlew
 
@@ -15,12 +10,12 @@ addons:
   sonarcloud:
     organization: "microscape-io" # the key of the org you chose at step #3
     token:
-      secure: $SONAR_TOKEN # encrypted value of your token
+      secure: "S3Ut3eIRM3Qi4YxcIIl8pIMsAaeLQjbvAIIa/o/NPFYaYlLXo+jPo6mJRpcpa7sId9EgbE+rUp73UNfQ3cpHKqXt7T1QhbEbcxp6DsW1ah2a/EHSGN0UN/eM7Y5i2Ow7ibWqCYj4upyPZqrW8qg6x0SzZLNdNW1eX4LAFEXfXTFmQQlGJ1SeI0IBxKAsWqnZqNaLAQfBaiGv/RR5e2xgtptFH4AejPlTjrbyoKyxC+s7pOq9ZOggaxILxq4K5KaaWIoraxzHk2GjN2pcq4c1KJD30To0UieqRoTNA8vBe6DJEB4wDM+f1Tsvcl607rT/p/KRGtZpHOwnZntKGfiY8D1fJfcbneZ7TB6MSE6/RWaslZ82xTZdsGs/dX8h2YpVExoudFudDkKookJe75UWO4SOkd0g7tfWVpXhPjNrvG6jZngzWZU5u2fa5rXbsVNdbzfWh/038PFrRI5dxsQHrAVwTnUHloa375X8aRL/DMsYHFfW5Ned/5XY9CiYba5l6Nt8DdOYkHfxyOajAdCljCPH2S+awFXjVxQYvGarXkyfkbU0Cr6fIDpyTpFUTchlCVx79Uq8AugEMbHxg0fpt8LANLdaHDdTi6nYbrQOspHoiMddXVQwoLxULBkDwu7/OpZIBTt81f6w8ecFvDagQpe29PJKMmO6+dLqHq7WXJg="
     branches:
       - master
       - development
 
-script: ./gradlew check
+script: "./gradlew check sonarqube"
 
 notifications:
   slack:
