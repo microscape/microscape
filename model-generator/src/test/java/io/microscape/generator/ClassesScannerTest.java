@@ -1,6 +1,7 @@
 package io.microscape.generator;
 
 import io.microscape.api.Documentation;
+import io.microscape.api.Section;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -57,4 +58,21 @@ class ClassesScannerTest {
                 Arguments.of("properties", "spring-boot-properties")
         );
     }
+
+    @Test
+    void scanJars_should_find_FeignClient() {
+        //Given: Jar with no content
+        Path jar = new File("./src/test/resources/feign.jar").toPath();
+
+        //When:
+        Documentation actual = ClassesScanner.scanJars(jar);
+
+        //Then:
+        final Documentation expected = new Documentation("feignClients");
+        final Section feignClients = new Section("Feign Clients", null);
+        feignClients.getContent().add(new Section(null, "titles"));
+        expected.getSections().add(feignClients);
+        assertEquals(expected, actual);
+    }
+
 }

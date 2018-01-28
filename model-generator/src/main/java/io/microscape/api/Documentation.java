@@ -1,12 +1,12 @@
 package io.microscape.api;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Documentation {
 
     private final String id;
-    private final List<Section> sections = Collections.emptyList();
+    private final List<Section> sections = new ArrayList<>(10);
 
     public Documentation() {
         this.id = "";

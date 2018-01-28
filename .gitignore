@@ -494,3 +494,4 @@ hs_err_pid*
 !/model-generator/src/test/resources/empty.jar
 !/model-generator/src/test/resources/spring-boot-properties.jar
 !/model-generator/src/test/resources/spring-boot-yml.jar
+!/model-generator/src/test/resources/feign.jar
