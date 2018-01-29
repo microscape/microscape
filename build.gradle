@@ -20,6 +20,7 @@ buildscript {
 }
 
 allprojects {
+    apply plugin: "jacoco"
     repositories {
         mavenLocal()
         mavenCentral()
