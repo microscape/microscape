@@ -32,7 +32,7 @@ public class ClassesScanner {
     static Documentation scanJars(final Path pathToJar) {
 
         try (final JarFile jarFile = new JarFile(pathToJar.toFile(), false, JarFile.OPEN_READ)) {
-            final String serviceId = findServiceId(jarFile);
+            final String serviceId = findApplicationName(jarFile);
             final Documentation documentation = new Documentation(serviceId);
 
             final List<Section> feignClients = jarFile.stream().filter(it -> it.getName().endsWith(".class"))
@@ -64,20 +64,20 @@ public class ClassesScanner {
         }
     }
 
-    private static String findServiceId(final JarFile jarFile) {
+    private static String findApplicationName(final JarFile jarFile) {
         final Optional<String> yml = jarFile.stream().filter(it -> "BOOT-INF/classes/application.yml".equals(it.getName()))
-                .map(it -> ClassesScanner.mapServiceId(jarFile, it)).findFirst();
+                .map(it -> ClassesScanner.mapApplicationNameFromYaml(jarFile, it)).findFirst();
 
         final Optional<String> properties = jarFile.stream().filter(it -> "BOOT-INF/classes/application.properties".equals(it.getName()))
-                .map(it -> ClassesScanner.mapServiceIdFromProperties(jarFile, it)).findFirst();
+                .map(it -> ClassesScanner.mapApplicationNameFromProperties(jarFile, it)).findFirst();
 
         return yml.orElse(properties.orElse(EMPTY_SERVICE_ID));
     }
 
-    private static String mapServiceId(final JarFile jarFile, final JarEntry jarEntry) {
+    private static String mapApplicationNameFromYaml(final JarFile jarFile, final JarEntry jarEntry) {
         try (
                 final InputStream in = jarFile.getInputStream(jarEntry);
-                final InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+                final InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8)
         ) {
             final Yaml yaml = new Yaml();
             final YamlConfig config = yaml.loadAs(reader, YamlConfig.class);
@@ -87,10 +87,10 @@ public class ClassesScanner {
         }
     }
 
-    private static String mapServiceIdFromProperties(JarFile jarFile, JarEntry jarEntry) {
+    private static String mapApplicationNameFromProperties(JarFile jarFile, JarEntry jarEntry) {
         try (
                 final InputStream in = jarFile.getInputStream(jarEntry);
-                final InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
+                final InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8)
         ) {
             final Properties properties = new Properties();
             properties.load(reader);

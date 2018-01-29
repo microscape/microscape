@@ -36,7 +36,9 @@ public class FeignVisitor extends ClassVisitor {
 
         @Override
         public void visit(String name, Object value) {
-            foundClients.add(String.valueOf(value));
+            if("name".equals(name) || "value".equals(name)) {
+              foundClients.add(String.valueOf(value));
+            }
         }
     }
 }

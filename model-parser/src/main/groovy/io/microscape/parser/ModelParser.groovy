@@ -9,7 +9,7 @@ import static java.util.stream.Collectors.toList;
 
 class ModelParser {
     static List<Documentation> parseModel(Path directory) {
-        def jsonSlurper = new JsonSlurper();
+        def jsonSlurper = new JsonSlurper()
 
         return Files.list(directory).filter { it.toString().endsWith ".micromodel.json" }
                 .map { it.toFile() }
