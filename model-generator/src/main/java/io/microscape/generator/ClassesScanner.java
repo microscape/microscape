@@ -4,6 +4,7 @@ import io.microscape.api.Documentation;
 import io.microscape.api.Section;
 import io.microscape.feign.FeignVisitor;
 import io.microscape.generator.yml.YamlConfig;
+import org.apache.commons.lang3.StringUtils;
 import org.objectweb.asm.ClassReader;
 import org.yaml.snakeyaml.Yaml;
 
@@ -27,28 +28,28 @@ public class ClassesScanner {
 
     private static final Logger LOGGER = Logger.getLogger(ClassesScanner.class.getName());
 
-    private static final String EMPTY_SERVICE_ID = "";
+    private static final String EMPTY_SERVICE_ID = StringUtils.EMPTY;
 
     static Documentation scanJars(final Path pathToJar) {
 
         try (final JarFile jarFile = new JarFile(pathToJar.toFile(), false, JarFile.OPEN_READ)) {
             final String serviceId = findApplicationName(jarFile);
-            final Documentation documentation = new Documentation(serviceId);
+            final Documentation documentation = Documentation.builder().id(serviceId).build();
 
             final List<Section> feignClients = jarFile.stream().filter(it -> it.getName().endsWith(".class"))
                     .flatMap(it -> findFeignClientsAndReturnServiceNames(jarFile, it))
-                    .map(it -> new Section(null, it))
+                    .map(it -> Section.builder().headline(null).text(it).build())
                     .collect(toList());
 
             if (!feignClients.isEmpty()) {
-                final Section feignClientSection = new Section("Feign Clients", null);
+                final Section feignClientSection = Section.builder().headline("Feign Clients").text(null).build();
                 feignClientSection.getContent().addAll(feignClients);
                 documentation.getSections().add(feignClientSection);
             }
 
             return documentation;
         } catch (Exception e) {
-            return new Documentation(EMPTY_SERVICE_ID);
+            return Documentation.builder().id(EMPTY_SERVICE_ID).build();
         }
     }
 

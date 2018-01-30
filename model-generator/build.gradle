@@ -16,6 +16,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.ow2.asm/asm
     compile group: 'org.ow2.asm', name: 'asm', version: '6.0'
     compile 'org.yaml:snakeyaml:1.19'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
 
     testCompile("org.junit.jupiter:junit-jupiter-api:5.0.3")
     testCompile("org.junit.jupiter:junit-jupiter-params:5.0.3")

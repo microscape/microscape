@@ -1,52 +1,23 @@
 package io.microscape.api;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Documentation {
 
-    private final String id;
+    @Builder.Default
+    private String id = StringUtils.EMPTY;
 
-    private final List<Section> sections = new ArrayList<>(10);
-
-    public Documentation() {
-        this.id = "";
-    }
-
-    public Documentation(String id) {
-        this.id = id == null ? "" : id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public List<Section> getSections() {
-        return sections;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Documentation that = (Documentation) o;
-
-        return id.equals(that.id) && sections.equals(that.sections);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + sections.hashCode();
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Documentation{" +
-                "id='" + id + '\'' +
-                ", sections=" + sections +
-                '}';
-    }
+    @Builder.Default
+    private List<Section> sections = new ArrayList<>(10);
 }

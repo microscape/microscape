@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,7 @@ class ClassesScannerTest {
         Documentation actual = ClassesScanner.scanJars(jar);
 
         //Then:
-        assertEquals(new Documentation(), actual);
+        assertEquals(Documentation.builder().build(), actual);
     }
 
     @Test
@@ -36,20 +37,20 @@ class ClassesScannerTest {
         Documentation actual = ClassesScanner.scanJars(jar);
 
         //Then:
-        assertEquals(new Documentation(), actual);
+        assertEquals(Documentation.builder().build(), actual);
     }
 
     @ParameterizedTest
     @MethodSource("springBootJarsProvider")
     void scanJars_should_return_Documentation_with_service_id_for_Spring_Boot(String serviceId, String jarName) {
         //Given: Jar with SpringBoot content
-        Path jar = new File("./src/test/resources/" + jarName +".jar").toPath();
+        Path jar = new File("./src/test/resources/" + jarName + ".jar").toPath();
 
         //When:
         Documentation actual = ClassesScanner.scanJars(jar);
 
         //Then:
-        assertEquals(new Documentation(serviceId), actual);
+        assertEquals(Documentation.builder().id(serviceId).build(), actual);
     }
 
     private static Stream<Arguments> springBootJarsProvider() {
@@ -68,10 +69,19 @@ class ClassesScannerTest {
         Documentation actual = ClassesScanner.scanJars(jar);
 
         //Then:
-        final Documentation expected = new Documentation("feignClients");
-        final Section feignClients = new Section("Feign Clients", null);
-        feignClients.getContent().add(new Section(null, "titles"));
-        expected.getSections().add(feignClients);
+        final Section feignClients = Section.builder()
+                .headline("Feign Clients")
+                .text(null)
+                .content(
+                        Collections.singletonList(Section.builder()
+                                .headline(null)
+                                .text("titles")
+                                .build()))
+                .build();
+        final Documentation expected = Documentation.builder()
+                .id("feignClients")
+                .sections(Collections.singletonList(feignClients))
+                .build();
         assertEquals(expected, actual);
     }
 
