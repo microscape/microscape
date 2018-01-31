@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,7 +51,10 @@ class ClassesScannerTest {
         Documentation actual = ClassesScanner.scanJars(jar);
 
         //Then:
-        assertEquals(Documentation.builder().id(serviceId).build(), actual);
+        List<Section> consumer = Collections.singletonList(Section.builder().text("exchange-example").build());
+        List<Section> sections = Collections.singletonList(Section.builder().headline("Exchange Consumer").content(consumer).build());
+        Documentation expected = Documentation.builder().id(serviceId).sections(sections).build();
+        assertEquals(expected, actual);
     }
 
     private static Stream<Arguments> springBootJarsProvider() {
