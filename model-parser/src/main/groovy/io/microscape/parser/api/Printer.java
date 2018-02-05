@@ -1,4 +1,4 @@
-package io.microscape.api;
+package io.microscape.parser.api;
 
 public interface Printer {
 

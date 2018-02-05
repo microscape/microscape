@@ -1,12 +1,8 @@
-package io.microscape.parser
+package io.microscape.printer.markdown
 
-import io.microscape.api.Documentation
-import io.microscape.api.Section
+import io.microscape.parser.api.Documentation
 import io.microscape.printer.markdown.MarkdownPrinter
 import spock.lang.*
-
-import java.nio.file.Path
-import java.nio.file.Paths
 
 @Title("MarkdownPrinter Unittests")
 @Subject(MarkdownPrinter)

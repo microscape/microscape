@@ -1,8 +1,8 @@
 package io.microscape.printer.markdown;
 
-import io.microscape.api.Documentation;
-import io.microscape.api.Printer;
-import io.microscape.api.Section;
+import io.microscape.parser.api.Documentation;
+import io.microscape.parser.api.Printer;
+import io.microscape.parser.api.Section;
 
 import java.util.stream.IntStream;
 

@@ -15,7 +15,12 @@ addons:
       - master
       - development
 
-script: "./gradlew check sonarqube"
+script:
+  - ./gradlew check sonarqube
+  - ./gradlew codeCoverageReport
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   slack:

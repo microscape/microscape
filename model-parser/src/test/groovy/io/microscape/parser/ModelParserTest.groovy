@@ -1,7 +1,7 @@
 package io.microscape.parser
 
-import io.microscape.api.Documentation
-import io.microscape.api.Section
+import io.microscape.parser.api.Documentation
+import io.microscape.parser.api.Section
 import spock.lang.*
 
 import java.nio.file.Path
